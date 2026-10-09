@@ -12,11 +12,9 @@ foreach (var p in await Produto.ListarProdutos())
 }
 
 
-static void Main(string[] args)
+// MENU DO SISTEMA
+do
 {
-
-    while (true)
-    {
     Console.WriteLine("--- MENU ---");
     Console.WriteLine("1- Cadastrar Produto");
     Console.WriteLine("2- Listar Produtos");
@@ -24,5 +22,26 @@ static void Main(string[] args)
     Console.WriteLine("4- Atualizar Produto");
     Console.WriteLine("5- Excluir Produto");
     Console.WriteLine("0- SAIR");
+
+    var opcao = Console.ReadLine();
+
+    switch (opcao)
+    {
+        case "1":
+        Console.WriteLine("Digite o produto: ");
+        string nome = Console.ReadLine() ?? string.Empty;
+
+        Console.WriteLine("Digite o preco do produto: ");
+        if(!decimal.TryParse(Console.ReadLine(), out decimal preco))
+        {
+            
+            Console.WriteLine("Preco invalido");
+            break;
+        }
+        decimal preco = decimal.Parse(Console.ReadLine() ?? "0");
+
+        Console.WriteLine("Digite a quantidade em estoque: ");
+        int estoque = int.Parse(Console.ReadLine() ?? "0");
+
     }
-}
+}while (true);
